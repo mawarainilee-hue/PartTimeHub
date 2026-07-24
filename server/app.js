@@ -38,7 +38,7 @@ const Notification = require("./models/Notification");
 const Message = require("./models/Message");
 
 // Connect MongoDB
-mongoose.connect("mongodb://127.0.0.1:27017/parttimehub")
+mongoose.connect("mongodb+srv://parttimehub:XRhzPJUEnNIncLvK@cluster0.a2phy16.mongodb.net/parttimehub?retryWrites=true&w=majority")
 .then(() => console.log("MongoDB Connected"))
 .catch(err => console.log(err));
 
