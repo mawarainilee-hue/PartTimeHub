@@ -43,7 +43,7 @@ export default function EmployerDashboard() {
 
   const loadUser = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/user/" + userId);
+      const res = await axios.get("https://parttimehub.onrender.com/user/" + userId);
       setUser(res.data);
     } catch (err) {
       console.error(err);
@@ -53,8 +53,8 @@ export default function EmployerDashboard() {
 
   const loadJobs = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/employer-jobs/" + userId);
-      setJobs(res.data);
+      const res = await axios.get("https://parttimehub.onrender.com/employer-jobs/" + userId);
+      setJobs(res.data);  
     } catch (err) {
       console.error(err);
       toast.error("Error loading jobs");
@@ -64,7 +64,7 @@ export default function EmployerDashboard() {
   const loadApplications = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:3000/employer-applications/" + userId
+        "https://parttimehub.onrender.com/employer-applications/" + userId
       );
       setApplications(res.data);
     } catch (err) {
@@ -75,7 +75,7 @@ export default function EmployerDashboard() {
 
   const updateStatus = async (id, status) => {
   try {
-    const res = await axios.put("http://localhost:3000/application/" + id, {
+    const res = await axios.put("https://parttimehub.onrender.com/application/" + id, {
       status: status
     });
 
@@ -95,7 +95,7 @@ export default function EmployerDashboard() {
     if (!window.confirm("Delete this job?")) return;
 
     try {
-      const res = await axios.delete("http://localhost:3000/job/" + id);
+      const res = await axios.delete("https://parttimehub.onrender.com/job/" + id);
       toast.success(res.data.message || "Job deleted");
       loadJobs();
     } catch (err) {
@@ -171,7 +171,7 @@ export default function EmployerDashboard() {
       }
 
       const res = await axios.put(
-        "http://localhost:3000/job/" + editingJob,
+        "https://parttimehub.onrender.com/job/" + editingJob,
         formData,
         {
           headers: {
@@ -212,7 +212,7 @@ export default function EmployerDashboard() {
             <div style={styles.userBox}>
               {user.avatar ? (
                 <img
-                  src={`http://localhost:3000/uploads/${user.avatar}`}
+                  src={`https://parttimehub.onrender.com /uploads/${user.avatar}`}
                   alt="avatar"
                   style={styles.avatarImage}
                 />
@@ -307,7 +307,7 @@ export default function EmployerDashboard() {
                       <img
                         src={
                           job.poster
-                            ? `http://localhost:3000/uploads/${job.poster}`
+                            ? `https://parttimehub.onrender.com /uploads/${job.poster}`
                             : "/job-placeholder.png"
                         }
                         alt="job"

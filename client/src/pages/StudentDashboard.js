@@ -34,7 +34,7 @@ export default function StudentDashboard() {
 
   const loadUser = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/user/" + userId);
+      const res = await axios.get("https://parttimehub.onrender.com/user/" + userId);
       setUser(res.data);
     } catch (err) {
       console.error(err);
@@ -44,7 +44,7 @@ export default function StudentDashboard() {
 
   const loadApplicationStats = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/applications/" + userId);
+      const res = await axios.get("https://parttimehub.onrender.com/applications/" + userId);
 
       const apps = res.data;
       const approved = apps.filter((a) => a.status === "Approved").length;
@@ -81,7 +81,7 @@ export default function StudentDashboard() {
               <div style={styles.avatarWrap}>
                 {user.avatar ? (
                   <img
-                    src={`http://localhost:3000/uploads/${user.avatar}`}
+                    src={`https://parttimehub.onrender.com/uploads/${user.avatar}`}
                     alt="avatar"
                     style={styles.avatarImage}
                   />

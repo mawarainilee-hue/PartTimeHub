@@ -7,7 +7,7 @@ export default function Notification() {
 
   const loadNotes = useCallback(async () => {
     const res = await axios.get(
-      "http://localhost:3000/notifications/" + userId
+      "https://parttimehub.onrender.com/notifications/" + userId
     );
     setNotes(res.data);
   }, [userId]); // ✅ dependency

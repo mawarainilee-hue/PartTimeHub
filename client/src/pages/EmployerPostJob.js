@@ -102,7 +102,7 @@ export default function EmployerPostJob() {
 
   const loadUser = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/user/" + employerId);
+      const res = await axios.get("https://parttimehub.onrender.com/user/" + employerId);
       setUser(res.data);
     } catch (err) {
       console.error(err);
@@ -148,7 +148,7 @@ export default function EmployerPostJob() {
         formData.append("poster", poster);
       }
 
-      const res = await axios.post("http://localhost:3000/job", formData, {
+      const res = await axios.post("https://parttimehub.onrender.com/job", formData, {
         headers: {
           "Content-Type": "multipart/form-data"
         }
@@ -195,7 +195,7 @@ export default function EmployerPostJob() {
             <div style={styles.userBox}>
               {user.avatar ? (
                 <img
-                  src={`http://localhost:3000/uploads/${user.avatar}`}
+                  src={`https://parttimehub.onrender.com /uploads/${user.avatar}`}
                   alt="avatar"
                   style={styles.avatarImage}
                 />

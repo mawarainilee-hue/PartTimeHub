@@ -1,5 +1,9 @@
 {
-  "dependencies": {
-    "recharts": "^2.12.7"
+  "name": "parttimehub",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "cd client && npm install && npm run build",
+    "start": "cd server && npm start"
   }
 }

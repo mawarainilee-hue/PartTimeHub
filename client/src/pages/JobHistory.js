@@ -24,7 +24,7 @@ export default function JobHistory() {
 
   const loadAdmin = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/user/" + userId);
+      const res = await axios.get("https://parttimehub.onrender.com/user/" + userId);
       setAdmin(res.data);
     } catch (err) {
       console.error(err);
@@ -33,7 +33,7 @@ export default function JobHistory() {
 
   const loadHistory = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/jobHistory");
+      const res = await axios.get("https://parttimehub.onrender.com/jobHistory");
       setJobs(res.data);
     } catch (err) {
       console.error(err);
@@ -62,7 +62,7 @@ export default function JobHistory() {
             <div style={styles.userBox}>
               {admin.avatar ? (
                 <img
-                  src={`http://localhost:3000/uploads/${admin.avatar}`}
+                  src={`https://parttimehub.onrender.com/uploads/${admin.avatar}`}
                   alt="avatar"
                   style={styles.avatarImage}
                 />
@@ -100,7 +100,7 @@ export default function JobHistory() {
                   <img
                     src={
                       job.poster
-                        ? `http://localhost:3000/uploads/${job.poster}`
+                        ? `https://parttimehub.onrender.com/uploads/${job.poster}`
                         : "/job-placeholder.png"
                     }
                     alt="poster"

@@ -27,7 +27,7 @@ export default function Applications() {
     const loadApplications = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:3000/applications/" + userId
+          "https://parttimehub.onrender.com/applications/" + userId
         );
         setApps(res.data);
       } catch (err) {
@@ -44,7 +44,7 @@ export default function Applications() {
 
   const loadUser = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/user/" + userId);
+      const res = await axios.get("https://parttimehub.onrender.com/user/" + userId);
       setUser(res.data);
     } catch (err) {
       console.error(err);
@@ -79,7 +79,7 @@ export default function Applications() {
               <div style={styles.avatarWrap}>
                 {user.avatar ? (
                   <img
-                    src={`http://localhost:3000/uploads/${user.avatar}`}
+                    src={`https://parttimehub.onrender.com/uploads/${user.avatar}`}
                     alt="avatar"
                     style={styles.avatarImage}
                   />
@@ -134,7 +134,7 @@ export default function Applications() {
                     <img
                       src={
                         app.jobId?.poster
-                          ? `http://localhost:3000/uploads/${app.jobId.poster}`
+                          ? `https://parttimehub.onrender.com/uploads/${app.jobId.poster}`
                           : "/job-placeholder.png"
                       }
                       alt={app.jobId?.title || "job"}

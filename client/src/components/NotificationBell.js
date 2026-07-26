@@ -16,7 +16,7 @@ export default function NotificationBell() {
     const loadNotes = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:3000/notifications/" + userId
+          "https://parttimehub.onrender.com//notifications/" + userId
         );
 
         const newNotes = res.data;
@@ -50,7 +50,7 @@ export default function NotificationBell() {
 
   const markRead = async (id) => {
     await axios.put(
-      "http://localhost:3000/notification/read/" + id
+      "https://parttimehub.onrender.com/read/" + id
     );
 
     // refresh after click

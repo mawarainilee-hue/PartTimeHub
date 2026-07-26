@@ -41,7 +41,7 @@ export default function FindJob() {
 
   const loadUser = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/user/" + userId);
+      const res = await axios.get("https://parttimehub.onrender.com/user/" + userId);
       setUser(res.data);
     } catch (err) {
       console.error(err);
@@ -51,7 +51,7 @@ export default function FindJob() {
 
   const loadJobs = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/match/" + userId);
+      const res = await axios.get("https://parttimehub.onrender.com/match/" + userId);
       setJobs(res.data);
       setFilteredJobs(res.data);
     } catch (err) {
@@ -137,7 +137,7 @@ export default function FindJob() {
 
   const applyJob = async (jobId) => {
     try {
-      await axios.post("http://localhost:3000/apply", {
+      await axios.post("https://parttimehub.onrender.com/apply", {
         studentId: userId,
         jobId
       });
@@ -166,7 +166,7 @@ export default function FindJob() {
               <div style={styles.avatarWrap}>
                 {user.avatar ? (
                   <img
-                    src={`http://localhost:3000/uploads/${user.avatar}`}
+                    src={`https://parttimehub.onrender.com/uploads/${user.avatar}`}
                     alt="avatar"
                     style={styles.avatarImage}
                   />
@@ -289,7 +289,7 @@ export default function FindJob() {
                     <img
                       src={
                         item.job.poster
-                          ? `http://localhost:3000/uploads/${item.job.poster}`
+                          ? `https://parttimehub.onrender.com/uploads/${item.job.poster}`
                           : "/job-placeholder.png"
                       }
                       alt={item.job.title}

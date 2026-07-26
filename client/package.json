@@ -14,7 +14,9 @@
     "react-scripts": "5.0.1",
     "react-toastify": "^11.1.0",
     "recharts": "^2.12.7",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "mongodb": "^6.0.0"
+
   },
   "scripts": {
     "start": "react-scripts start",

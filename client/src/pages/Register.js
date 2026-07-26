@@ -14,7 +14,7 @@ export default function Register() {
 
   const register = async () => {
     try {
-      const res = await axios.post("http://localhost:3000/register", form);
+      const res = await axios.post("https://parttimehub.onrender.com/register", form);
       alert(res.data.message || "Registered");
       nav("/");
     } catch (err) {

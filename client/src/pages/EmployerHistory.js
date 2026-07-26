@@ -21,7 +21,7 @@ export default function EmployerHistory() {
   const loadUser = async () => {
   try {
     const res = await axios.get(
-      "http://localhost:3000/user/" + userId
+      "https://parttimehub.onrender.com/user/" + userId
     );
 
     setUser(res.data);
@@ -33,7 +33,7 @@ export default function EmployerHistory() {
   const loadHistory = async () => {
 
     const res = await axios.get(
-      "http://localhost:3000/employer-history/" +
+      "https://parttimehub.onrender.com/employer-history/" +
       userId
     );
 
@@ -54,7 +54,7 @@ export default function EmployerHistory() {
             <div style={styles.userBox}>
                 {user.avatar ? (
                 <img
-                    src={`http://localhost:3000/uploads/${user.avatar}`}
+                    src={`https://parttimehub.onrender.com /uploads/${user.avatar}`}
                     alt=""
                     style={styles.avatarImage}
                 />

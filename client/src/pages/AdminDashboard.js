@@ -46,7 +46,7 @@ export default function AdminDashboard() {
 
   const loadAdmin = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/user/" + userId);
+      const res = await axios.get("https://parttimehub.onrender.com/user/" + userId);
       setUser(res.data);
     } catch (err) {
       console.error(err);
@@ -56,7 +56,7 @@ export default function AdminDashboard() {
 
   const loadJobs = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/pendingJobs");
+      const res = await axios.get("https://parttimehub.onrender.com/pendingJobs");
       setJobs(res.data);
     } catch (err) {
       console.error(err);
@@ -66,7 +66,7 @@ export default function AdminDashboard() {
 
   const loadUsers = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/users");
+      const res = await axios.get("https://parttimehub.onrender.com/users");
       setUsers(res.data);
     } catch (err) {
       console.error(err);
@@ -76,7 +76,7 @@ export default function AdminDashboard() {
 
   const loadStats = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/admin/stats");
+      const res = await axios.get("https://parttimehub.onrender.com/admin/stats");
       setStats({
         totalUsers: res.data.totalUsers || 0,
         students: res.data.students || 0,
@@ -101,7 +101,7 @@ export default function AdminDashboard() {
   const loadCharts = async () => {
 
       const res = await axios.get(
-          "http://localhost:3000/admin/chart-data"
+          "https://parttimehub.onrender.com/admin/chart-data"
       );
 
       setTopEmployers(res.data.employers);
@@ -111,7 +111,7 @@ export default function AdminDashboard() {
 
   const updateJobStatus = async (id, status) => {
     try {
-      const res = await axios.put("http://localhost:3000/jobStatus/" + id, {
+      const res = await axios.put("https://parttimehub.onrender.com/jobStatus/" + id, {
         status
       });
 
@@ -128,7 +128,7 @@ export default function AdminDashboard() {
     if (!window.confirm("Delete this user?")) return;
 
     try {
-      const res = await axios.delete("http://localhost:3000/profile/" + id);
+      const res = await axios.delete("https://parttimehub.onrender.com/profile/" + id);
       toast.success(res.data.message || "User deleted");
       loadUsers();
       loadStats();
@@ -203,7 +203,7 @@ export default function AdminDashboard() {
             <div style={styles.userBox}>
               {user.avatar ? (
                 <img
-                  src={`http://localhost:3000/uploads/${user.avatar}`}
+                  src={`https://parttimehub.onrender.com/uploads/${user.avatar}`}
                   alt="avatar"
                   style={styles.avatarImage}
                 />

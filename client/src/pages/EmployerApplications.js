@@ -24,7 +24,7 @@ export default function EmployerApplications() {
 
   const loadUser = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/user/" + userId);
+      const res = await axios.get("https://parttimehub.onrender.com/user/" + userId);
       setUser(res.data);
     } catch (err) {
       console.error(err);
@@ -35,7 +35,7 @@ export default function EmployerApplications() {
   const loadApplications = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:3000/employer-applications/" + userId
+        "https://parttimehub.onrender.com/employer-applications/" + userId
       );
       setApplications(res.data);
     } catch (err) {
@@ -46,7 +46,7 @@ export default function EmployerApplications() {
 
   const updateStatus = async (id, status) => {
     try {
-      const res = await axios.put("http://localhost:3000/application/" + id, {
+      const res = await axios.put("https://parttimehub.onrender.com/application/" + id, {
         status
       });
 
@@ -73,7 +73,7 @@ export default function EmployerApplications() {
             <div style={styles.userBox}>
               {user.avatar ? (
                 <img
-                  src={`http://localhost:3000/uploads/${user.avatar}`}
+                  src={`https://parttimehub.onrender.com /uploads/${user.avatar}`}
                   alt="avatar"
                   style={styles.avatarImage}
                 />

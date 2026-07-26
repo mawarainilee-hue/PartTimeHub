@@ -3,16 +3,22 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const multer = require("multer");
 const path = require("path");
-const nodemailer = require("nodemailer");
 const app = express();
 const bcrypt = require("bcryptjs");
 
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: "https://partimehub.zarinaproject.my",
+  credentials: true
+}));
 app.use(express.json());
 app.use("/uploads", express.static("uploads"));
 
+// Test route
+app.get("/", (req, res) => {
+    res.send("PartTimeHub API Running");
+});
 // storage config
 const storage = multer.diskStorage({
   destination: "./uploads/",
@@ -21,15 +27,7 @@ const storage = multer.diskStorage({
   }
 });
 
-const upload = multer({ storage });
 
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: "yourgmail@gmail.com",
-    pass: "your_app_password"
-  }
-});
 
 const Application = require("./models/Application");
 const User = require("./models/user");
@@ -38,18 +36,17 @@ const Notification = require("./models/Notification");
 const Message = require("./models/Message");
 
 // Connect MongoDB
-mongoose.connect("mongodb://127.0.0.1:27017/parttimehub")
+mongoose.connect(process.env.MONGO_URI)
 .then(() => console.log("MongoDB Connected"))
 .catch(err => console.log(err));
 
-// Test route
-app.get("/", (req, res) => {
-    res.send("PartTimeHub API Running");
-});
+
 
 // Run server
-app.listen(3000, () => {
-    console.log("Server running on port 3000");
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });
 
 

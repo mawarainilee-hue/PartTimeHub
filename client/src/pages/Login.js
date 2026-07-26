@@ -10,7 +10,7 @@ export default function Login() {
 
   const login = async () => {
     try {
-      const res = await axios.post("http://localhost:3000/login", {
+      const res = await axios.post("https://parttimehub.onrender.com/login", {
         email,
         password
       });

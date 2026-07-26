@@ -8,7 +8,7 @@ export default function AdminUsers() {
 
   const loadUsers = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/users");
+      const res = await axios.get("https://parttimehub.onrender.com/users");
       setUsers(res.data);
     } catch (err) {
       console.error(err);
@@ -17,7 +17,7 @@ export default function AdminUsers() {
   };
 
   const deleteUser = async (id) => {
-    await axios.delete("http://localhost:3000/profile/" + id);
+    await axios.delete("https://parttimehub.onrender.com/profile/" + id);
     loadUsers();
   };
 

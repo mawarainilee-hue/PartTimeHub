@@ -55,13 +55,13 @@ export default function Profile() {
         return;
       }
 
-      const res = await axios.get("http://localhost:3000/user/" + userId);
+      const res = await axios.get("https://parttimehub.onrender.com/user/" + userId);
       const profileData = res.data;
 
       setUser(profileData);
 
       if (profileData.avatar) {
-        setPreview("http://localhost:3000/uploads/" + profileData.avatar);
+        setPreview("https://parttimehub.onrender.com/uploads/" + profileData.avatar);
       } else {
         setPreview("https://via.placeholder.com/120");
       }
@@ -156,7 +156,7 @@ export default function Profile() {
       }
 
       const res = await axios.put(
-        "http://localhost:3000/profile/" + userId,
+        "https://parttimehub.onrender.com/profile/" + userId,
         formData,
         {
           headers: {
@@ -177,7 +177,7 @@ export default function Profile() {
     if (!window.confirm("Delete account?")) return;
 
     try {
-      const res = await axios.delete("http://localhost:3000/profile/" + userId);
+      const res = await axios.delete("https://parttimehub.onrender.com/profile/" + userId);
       toast.success(res.data.message || "Account deleted");
       localStorage.clear();
       navigate("/");
@@ -204,7 +204,7 @@ export default function Profile() {
               <div style={styles.avatarWrap}>
                 {user.avatar ? (
                   <img
-                    src={`http://localhost:3000/uploads/${user.avatar}`}
+                    src={`https://parttimehub.onrender.com/uploads/${user.avatar}`}
                     alt="avatar"
                     style={styles.avatarImage}
                   />

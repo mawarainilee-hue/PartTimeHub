@@ -30,7 +30,7 @@ export default function Chat() {
   const loadUser = async () => {
 
     const res = await axios.get(
-      "http://localhost:3000/user/" + userId
+      "https://parttimehub.onrender.com/user/" + userId
     );
 
     setUser(res.data);
@@ -45,7 +45,7 @@ const loadMessages = async () => {
     console.log("Other User ID:", otherUserId);
 
     const res = await axios.get(
-      `http://localhost:3000/messages/${userId}/${otherUserId}`
+      `https://parttimehub.onrender.com/messages/${userId}/${otherUserId}`
     );
 
     setMessages(res.data);
@@ -64,7 +64,7 @@ const loadMessages = async () => {
     if (!message.trim()) return;
 
     await axios.post(
-      "http://localhost:3000/send-message",
+      "https://parttimehub.onrender.com/send-message",
       {
         senderId: userId,
         receiverId: otherUserId,
@@ -94,7 +94,7 @@ const loadMessages = async () => {
             <div style={styles.userBox}>
               {user.avatar ? (
                 <img
-                  src={`http://localhost:3000/uploads/${user.avatar}`}
+                  src={`https://parttimehub.onrender.com /uploads/${user.avatar}`}
                   alt=""
                   style={styles.avatarImage}
                 />

@@ -21,7 +21,7 @@ export default function StudentProfileView() {
   const loadStudent = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:3000/student-profile/${id}`
+        `https://parttimehub.onrender.com/student-profile/${id}`
       );
 
       setStudent(res.data);
@@ -34,7 +34,7 @@ export default function StudentProfileView() {
   const loadEmployer = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:3000/user/${userId}`
+        `https://parttimehub.onrender.com/user/${userId}`
       );
 
       setUser(res.data);
@@ -64,7 +64,7 @@ export default function StudentProfileView() {
             <div style={styles.userBox}>
               {user.avatar ? (
                 <img
-                  src={`http://localhost:3000/uploads/${user.avatar}`}
+                  src={`https://parttimehub.onrender.com/uploads/${user.avatar}`}
                   alt=""
                   style={styles.avatarImage}
                 />
@@ -137,7 +137,7 @@ export default function StudentProfileView() {
 
             {student.avatar && (
               <img
-                src={`http://localhost:3000/uploads/${student.avatar}`}
+                src={`https://parttimehub.onrender.com/uploads/${student.avatar}`}
                 alt=""
                 style={styles.studentAvatar}
               />
