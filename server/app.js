@@ -7,6 +7,11 @@ const nodemailer = require("nodemailer");
 const app = express();
 const bcrypt = require("bcryptjs");
 
+app.use(express.static(path.join(__dirname, "../client/build")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
+});
 
 // Middleware
 app.use(cors());
@@ -21,15 +26,7 @@ const storage = multer.diskStorage({
   }
 });
 
-const upload = multer({ storage });
 
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: "yourgmail@gmail.com",
-    pass: "your_app_password"
-  }
-});
 
 const Application = require("./models/Application");
 const User = require("./models/user");
@@ -38,7 +35,7 @@ const Notification = require("./models/Notification");
 const Message = require("./models/Message");
 
 // Connect MongoDB
-mongoose.connect("mongodb+srv://parttimehub:XRhzPJUEnNIncLvK@cluster0.a2phy16.mongodb.net/parttimehub?retryWrites=true&w=majority")
+mongoose.connect(process.env.MONGO_URI)
 .then(() => console.log("MongoDB Connected"))
 .catch(err => console.log(err));
 
@@ -48,9 +45,12 @@ app.get("/", (req, res) => {
 });
 
 // Run server
-app.listen(3000, () => {
-    console.log("Server running on port 3000");
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });
+
 
 
 // Register student
