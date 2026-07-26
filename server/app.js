@@ -7,17 +7,15 @@ const nodemailer = require("nodemailer");
 const app = express();
 const bcrypt = require("bcryptjs");
 
-app.use(express.static(path.join(__dirname, "../client/build")));
-
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/build/index.html"));
-});
-
 // Middleware
 app.use(cors());
 app.use(express.json());
 app.use("/uploads", express.static("uploads"));
 
+// Test route
+app.get("/", (req, res) => {
+    res.send("PartTimeHub API Running");
+});
 // storage config
 const storage = multer.diskStorage({
   destination: "./uploads/",
@@ -25,7 +23,6 @@ const storage = multer.diskStorage({
     cb(null, Date.now() + path.extname(file.originalname));
   }
 });
-
 
 
 const Application = require("./models/Application");
@@ -39,10 +36,7 @@ mongoose.connect(process.env.MONGO_URI)
 .then(() => console.log("MongoDB Connected"))
 .catch(err => console.log(err));
 
-// Test route
-app.get("/", (req, res) => {
-    res.send("PartTimeHub API Running");
-});
+
 
 // Run server
 const PORT = process.env.PORT || 3000;
