@@ -555,4 +555,4 @@ const styles = {
     fontSize: "13px",
     marginTop:"20px"
   }
-};
+}

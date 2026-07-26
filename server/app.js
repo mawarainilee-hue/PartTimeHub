@@ -50,6 +50,7 @@ app.listen(PORT, () => {
 });
 
 
+
 // Register student
 app.post("/register", async (req, res) => {
   try {
