@@ -8,7 +8,10 @@ const app = express();
 const bcrypt = require("bcryptjs");
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: "https://partimehub.zarinaproject.my",
+  credentials: true
+}));
 app.use(express.json());
 app.use("/uploads", express.static("uploads"));
 
