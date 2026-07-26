@@ -23,7 +23,7 @@ const storage = multer.diskStorage({
     cb(null, Date.now() + path.extname(file.originalname));
   }
 });
-
+const upload = multer({ storage });
 
 const Application = require("./models/Application");
 const User = require("./models/user");
