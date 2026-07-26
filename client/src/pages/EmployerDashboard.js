@@ -212,7 +212,7 @@ export default function EmployerDashboard() {
             <div style={styles.userBox}>
               {user.avatar ? (
                 <img
-                  src={`https://parttimehub.onrender.com /uploads/${user.avatar}`}
+                  src={`https://parttimehub.onrender.com/uploads/${user.avatar}`}
                   alt="avatar"
                   style={styles.avatarImage}
                 />
@@ -307,7 +307,7 @@ export default function EmployerDashboard() {
                       <img
                         src={
                           job.poster
-                            ? `https://parttimehub.onrender.com /uploads/${job.poster}`
+                            ? `https://parttimehub.onrender.com/uploads/${job.poster}`
                             : "/job-placeholder.png"
                         }
                         alt="job"
