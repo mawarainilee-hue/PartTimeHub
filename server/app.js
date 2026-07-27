@@ -587,6 +587,10 @@ app.put("/notification/read/:id", async (req, res) => {
 
 // PROFILE
 app.put("/profile/:id", upload.single("avatar"), async (req, res) => {
+  console.log("===== PROFILE UPDATE =====");
+  console.log("User ID:", req.params.id);
+  console.log("Body:", req.body);
+  console.log("File:", req.file);
   try {
     const updateData = {
       name: req.body.name || "",
@@ -608,11 +612,11 @@ app.put("/profile/:id", upload.single("avatar"), async (req, res) => {
     if (req.file) {
       updateData.avatar = req.file.path;
     }
-
+    console.log("Update Data:", updateData);
     const updatedUser = await User.findByIdAndUpdate(
       req.params.id,
       updateData,
-      { returnDocument: "after" } // ✅ UPDATED HERE
+      { new: true, runValidators: true } // ✅ UPDATED HERE
     );
 
     res.json({
@@ -621,13 +625,12 @@ app.put("/profile/:id", upload.single("avatar"), async (req, res) => {
     });
 
   } catch (err) {
-  console.error("PROFILE UPDATE ERROR:");
+  console.error("PROFILE UPDATE ERROR");
   console.error(err);
-  console.error(err.message);
-  console.error(err.stack);
 
   res.status(500).json({
-    message: err.message,
+    error: err.message,
+    stack: err.stack
   });
 }
 });
