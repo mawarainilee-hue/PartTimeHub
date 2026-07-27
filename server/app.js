@@ -616,9 +616,15 @@ app.put("/profile/:id", upload.single("avatar"), async (req, res) => {
     });
 
   } catch (err) {
-    console.error("PROFILE UPDATE ERROR:", err);
-    res.status(500).json({ message: "Error updating profile" });
-  }
+  console.error("PROFILE UPDATE ERROR:");
+  console.error(err);
+  console.error(err.message);
+  console.error(err.stack);
+
+  res.status(500).json({
+    message: err.message,
+  });
+}
 });
 
 //DELETE PROFILE
