@@ -61,7 +61,7 @@ export default function Profile() {
       setUser(profileData);
 
       if (profileData.avatar) {
-        setPreview("https://parttimehub.onrender.com/uploads/" + profileData.avatar);
+        setPreview(profileData.avatar);
       } else {
         setPreview("https://via.placeholder.com/120");
       }
@@ -204,7 +204,7 @@ export default function Profile() {
               <div style={styles.avatarWrap}>
                 {user.avatar ? (
                   <img
-                    src={`https://parttimehub.onrender.com/uploads/${user.avatar}`}
+                    src={user.avatar}
                     alt="avatar"
                     style={styles.avatarImage}
                   />

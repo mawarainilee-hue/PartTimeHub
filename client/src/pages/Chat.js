@@ -94,7 +94,7 @@ const loadMessages = async () => {
             <div style={styles.userBox}>
               {user.avatar ? (
                 <img
-                  src={`https://parttimehub.onrender.com /uploads/${user.avatar}`}
+                  src={user.avatar}
                   alt=""
                   style={styles.avatarImage}
                 />

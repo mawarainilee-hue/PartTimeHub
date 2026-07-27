@@ -5,6 +5,8 @@ const multer = require("multer");
 const path = require("path");
 const app = express();
 const bcrypt = require("bcryptjs");
+const { v2: cloudinary } = require("cloudinary");
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
 
 
 // Middleware
@@ -19,15 +21,26 @@ app.use("/uploads", express.static("uploads"));
 app.get("/", (req, res) => {
     res.send("PartTimeHub API Running");
 });
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 // storage config
-const storage = multer.diskStorage({
-  destination: "./uploads/",
-  filename: (req, file, cb) => {
-    cb(null, Date.now() + path.extname(file.originalname));
-  }
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: "PartTimeHub",
+    allowed_formats: ["jpg", "jpeg", "png", "webp"],
+    public_id: (req, file) =>
+      Date.now() + "-" + file.originalname.replace(/\s+/g, "-"),
+  },
 });
 
 const upload = multer({ storage });
+
+
 
 const Application = require("./models/Application");
 const User = require("./models/user");
@@ -588,7 +601,7 @@ app.put("/profile/:id", upload.single("avatar"), async (req, res) => {
     }
 
     if (req.file) {
-      updateData.avatar = req.file.filename;
+      updateData.avatar = req.file.path;
     }
 
     const updatedUser = await User.findByIdAndUpdate(

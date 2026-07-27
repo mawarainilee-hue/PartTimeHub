@@ -166,7 +166,7 @@ export default function FindJob() {
               <div style={styles.avatarWrap}>
                 {user.avatar ? (
                   <img
-                    src={`https://parttimehub.onrender.com/uploads/${user.avatar}`}
+                    src={user.avatar}
                     alt="avatar"
                     style={styles.avatarImage}
                   />
@@ -287,11 +287,7 @@ export default function FindJob() {
                 <div key={item.job._id} style={styles.jobCard}>
                   <div style={styles.posterSection}>
                     <img
-                      src={
-                        item.job.poster
-                          ? `https://parttimehub.onrender.com/uploads/${item.job.poster}`
-                          : "/job-placeholder.png"
-                      }
+                      src={item.job.poster || "/job-placeholder.png"}
                       alt={item.job.title}
                       style={styles.posterImage}
                     />
