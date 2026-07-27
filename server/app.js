@@ -589,8 +589,7 @@ app.put("/notification/read/:id", async (req, res) => {
 app.put("/profile/:id", upload.single("avatar"), async (req, res) => {
   console.log("===== PROFILE UPDATE =====");
   console.log("User ID:", req.params.id);
-  console.log("Body:", req.body);
-  console.log("File:", req.file);
+  
   try {
     const updateData = {
       name: req.body.name || "",
