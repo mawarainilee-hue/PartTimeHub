@@ -909,5 +909,4 @@ app.get("/admin/chart-data", async (req, res) => {
       message: "Error loading chart"
     });
   }
-})
 });
