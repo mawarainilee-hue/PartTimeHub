@@ -54,7 +54,7 @@ export default function EmployerHistory() {
             <div style={styles.userBox}>
                 {user.avatar ? (
                 <img
-                    src={user.avatar}
+                    src={`https://parttimehub.onrender.com/uploads/${user.avatar}`}
                     alt=""
                     style={styles.avatarImage}
                 />

@@ -81,7 +81,7 @@ export default function StudentDashboard() {
               <div style={styles.avatarWrap}>
                 {user.avatar ? (
                   <img
-                    src={user.avatar}
+                    src={`https://parttimehub.onrender.com/uploads/${user.avatar}`}
                     alt="avatar"
                     style={styles.avatarImage}
                   />

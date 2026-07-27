@@ -79,7 +79,7 @@ export default function Applications() {
               <div style={styles.avatarWrap}>
                 {user.avatar ? (
                   <img
-                    src={user.avatar}
+                    src={`https://parttimehub.onrender.com/uploads/${user.avatar}`}
                     alt="avatar"
                     style={styles.avatarImage}
                   />
@@ -132,7 +132,11 @@ export default function Applications() {
                 <div style={styles.appCard} key={app._id}>
                   <div style={styles.posterSection}>
                     <img
-                      src={app.jobId?.poster || "/job-placeholder.png"}
+                      src={
+                        app.jobId?.poster
+                          ? `https://parttimehub.onrender.com/uploads/${app.jobId.poster}`
+                          : "/job-placeholder.png"
+                      }
                       alt={app.jobId?.title || "job"}
                       style={styles.posterImage}
                     />

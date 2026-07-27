@@ -203,7 +203,7 @@ export default function AdminDashboard() {
             <div style={styles.userBox}>
               {user.avatar ? (
                 <img
-                  src={user.avatar}
+                  src={`https://parttimehub.onrender.com/uploads/${user.avatar}`}
                   alt="avatar"
                   style={styles.avatarImage}
                 />

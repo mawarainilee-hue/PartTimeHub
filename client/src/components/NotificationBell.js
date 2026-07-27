@@ -16,7 +16,7 @@ export default function NotificationBell() {
     const loadNotes = async () => {
       try {
         const res = await axios.get(
-          "https://parttimehub.onrender.com//notifications/" + userId
+          "https://parttimehub.onrender.com/notifications/" + userId
         );
 
         const newNotes = res.data;

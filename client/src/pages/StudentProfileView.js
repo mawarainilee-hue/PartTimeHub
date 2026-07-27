@@ -64,7 +64,7 @@ export default function StudentProfileView() {
             <div style={styles.userBox}>
               {user.avatar ? (
                 <img
-                  src={user.avatar}
+                  src={`https://parttimehub.onrender.com/uploads/${user.avatar}`}
                   alt=""
                   style={styles.avatarImage}
                 />
@@ -137,7 +137,7 @@ export default function StudentProfileView() {
 
             {student.avatar && (
               <img
-                src={user.avatar}
+                src={`https://parttimehub.onrender.com/uploads/${student.avatar}`}
                 alt=""
                 style={styles.studentAvatar}
               />

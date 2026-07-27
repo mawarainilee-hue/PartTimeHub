@@ -62,7 +62,7 @@ export default function JobHistory() {
             <div style={styles.userBox}>
               {admin.avatar ? (
                 <img
-                  src={admin.avatar}
+                  src={`https://parttimehub.onrender.com/uploads/${admin.avatar}`}
                   alt="avatar"
                   style={styles.avatarImage}
                 />
@@ -98,7 +98,11 @@ export default function JobHistory() {
               {jobs.map((job) => (
                 <div key={job._id} style={styles.card}>
                   <img
-                    src={job.poster || "/job-placeholder.png"}
+                    src={
+                      job.poster
+                        ? `https://parttimehub.onrender.com/uploads/${job.poster}`
+                        : "/job-placeholder.png"
+                    }
                     alt="poster"
                     style={styles.poster}
                   />
