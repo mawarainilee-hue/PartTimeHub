@@ -586,7 +586,7 @@ app.put("/notification/read/:id", async (req, res) => {
 });
 
 // PROFILE
-app.put("/profile/:id", upload.single("avatar"), async (req, res) => {
+app.put("/profile/:id", async (req, res) => {
   console.log("===== PROFILE UPDATE =====");
   console.log("User ID:", req.params.id);
   
