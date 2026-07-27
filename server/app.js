@@ -587,9 +587,6 @@ app.put("/notification/read/:id", async (req, res) => {
 
 // PROFILE
 app.put("/profile/:id", upload.single("avatar"), async (req, res) => {
-  console.log("===== PROFILE UPDATE =====");
-  console.log("User ID:", req.params.id);
-  
   try {
     const updateData = {
       name: req.body.name || "",
@@ -609,13 +606,13 @@ app.put("/profile/:id", upload.single("avatar"), async (req, res) => {
     }
 
     if (req.file) {
-      updateData.avatar = req.file.path;
+      updateData.avatar = req.file.filename;
     }
-    console.log("Update Data:", updateData);
+
     const updatedUser = await User.findByIdAndUpdate(
       req.params.id,
       updateData,
-      { new: true, runValidators: true } // ✅ UPDATED HERE
+      { returnDocument: "after" } // ✅ UPDATED HERE
     );
 
     res.json({
@@ -624,13 +621,10 @@ app.put("/profile/:id", upload.single("avatar"), async (req, res) => {
     });
 
   } catch (err) {
-  console.log("STATUS:", err.response?.status);
-  console.log("DATA:", err.response?.data);
-  console.log("MESSAGE:", err.message);
-
-  toast.error("Error updating profile");
-
-};
+    console.error("PROFILE UPDATE ERROR:", err);
+    res.status(500).json({ message: "Error updating profile" });
+  }
+});
 
 //DELETE PROFILE
 app.delete("/profile/:id", async (req, res) => {
