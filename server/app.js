@@ -586,7 +586,7 @@ app.put("/notification/read/:id", async (req, res) => {
 });
 
 // PROFILE
-app.put("/profile/:id", async (req, res) => {
+app.put("/profile/:id", upload.single("avatar"), async (req, res) => {
   console.log("===== PROFILE UPDATE =====");
   console.log("User ID:", req.params.id);
   
@@ -624,15 +624,13 @@ app.put("/profile/:id", async (req, res) => {
     });
 
   } catch (err) {
-  console.error("PROFILE UPDATE ERROR");
-  console.error(err);
+  console.log("STATUS:", err.response?.status);
+  console.log("DATA:", err.response?.data);
+  console.log("MESSAGE:", err.message);
 
-  res.status(500).json({
-    error: err.message,
-    stack: err.stack
-  });
-}
-});
+  toast.error("Error updating profile");
+
+};
 
 //DELETE PROFILE
 app.delete("/profile/:id", async (req, res) => {
