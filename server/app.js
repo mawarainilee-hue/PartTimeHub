@@ -5,8 +5,6 @@ const multer = require("multer");
 const path = require("path");
 const app = express();
 const bcrypt = require("bcryptjs");
-const { v2: cloudinary } = require("cloudinary");
-const { CloudinaryStorage } = require("multer-storage-cloudinary");
 
 
 // Middleware
@@ -22,25 +20,12 @@ app.get("/", (req, res) => {
     res.send("PartTimeHub API Running");
 });
 
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
-});
-
-console.log("Cloud:", process.env.CLOUDINARY_CLOUD_NAME);
-console.log("Key:", process.env.CLOUDINARY_API_KEY);
-console.log("Secret exists:", !!process.env.CLOUDINARY_API_SECRET);
-
 // storage config
-const storage = new CloudinaryStorage({
-  cloudinary: cloudinary,
-  params: {
-    folder: "PartTimeHub",
-    allowed_formats: ["jpg", "jpeg", "png", "webp"],
-    public_id: (req, file) =>
-      Date.now() + "-" + file.originalname.replace(/\s+/g, "-"),
-  },
+const storage = multer.diskStorage({
+  destination: "./uploads/",
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + path.extname(file.originalname));
+  }
 });
 
 const upload = multer({ storage });
