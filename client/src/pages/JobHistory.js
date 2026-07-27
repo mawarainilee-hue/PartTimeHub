@@ -60,15 +60,7 @@ export default function JobHistory() {
         <div style={styles.sidebar}>
           <div>
             <div style={styles.userBox}>
-              {admin.avatar ? (
-                <img
-                  src={`https://parttimehub.onrender.com/uploads/${admin.avatar}`}
-                  alt="avatar"
-                  style={styles.avatarImage}
-                />
-              ) : (
-                <div style={styles.avatar}>👤</div>
-              )}
+              <div style={styles.avatar}>👤</div>
 
               <div>
                 <p style={styles.name}>{admin.name || "Admin"}</p>

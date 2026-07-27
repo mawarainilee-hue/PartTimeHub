@@ -201,15 +201,7 @@ export default function AdminDashboard() {
         <div style={styles.sidebar}>
           <div>
             <div style={styles.userBox}>
-              {user.avatar ? (
-                <img
-                  src={`https://parttimehub.onrender.com/uploads/${user.avatar}`}
-                  alt="avatar"
-                  style={styles.avatarImage}
-                />
-              ) : (
-                <div style={styles.avatar}>👤</div>
-              )}
+              <div style={styles.avatar}>👤</div>
 
               <div>
                 <p style={styles.name}>{user.name || "Admin"}</p>
